@@ -1,6 +1,6 @@
 # flutter_traveloka_ui
 
-Learn http client on flutter
+Learn ui traveloka on flutter
 
 ## Getting Started
 
