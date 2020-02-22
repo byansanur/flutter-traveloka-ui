@@ -10,7 +10,7 @@ class _AwalState extends State<Awal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Traveloka'),
+        title: Text('Traveloka', textAlign: TextAlign.center,),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -26,6 +26,7 @@ class _AwalState extends State<Awal> {
           Divider(), // for view like android xml
           MenuUtama(), // stateles widget menu utama
           MenuTambahan(), // stateles
+          MenuPromo(), // stateles
         ]
       ),
     );
@@ -188,7 +189,7 @@ class MenuTambahan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100.0, // tentukan tingginya layout
-      padding: EdgeInsets.symmetric(vertical: 10.0), // kasih padding
+      padding: EdgeInsets.symmetric(vertical: 20.0), // kasih padding
       child: ListView(
         scrollDirection: Axis.horizontal, // scrollHorizontal in child
         children: menuTambahan, // buat list for item in children
@@ -214,7 +215,7 @@ class MenuTambahanItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 90.0,
+      width: 85.0,
       child: Column(
         children: <Widget>[
           Icon(icon),
@@ -224,6 +225,111 @@ class MenuTambahanItem extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class MenuPromo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        ListTile(
+          title: Text(
+            'Promo Saat Ini', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.0),
+          ),
+          trailing: IconButton(
+            icon: Icon(
+              Icons.keyboard_arrow_right), 
+              onPressed: (){},
+          ),
+        ),
+        Container(
+          width: double.infinity,
+          height: 150.0,
+          padding: EdgeInsets.only(left: 10.0, bottom: 10.0),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.blue,
+                      Colors.blue[800],
+                    ]
+                  ),
+                  borderRadius: BorderRadius.circular(8.0)
+                ),
+                height: 150.0,
+                width: 150.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.red[300],
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.elliptical(20.0, 20.0),
+                          bottomRight: Radius.elliptical(150, 150)
+                        )
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 5.0, 
+                          left: 5.0, 
+                          right: 30.0, 
+                          bottom: 30.0
+                        ),
+                        child: Text(
+                          '%', 
+                          style: TextStyle(fontSize: 24.0, color: Colors.white)
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container()
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Lihat Semua \nPromo',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18.0,
+                          color: Colors.white
+                        )
+                      ),
+                    ),
+                  ]
+                )
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.blue,
+                      Colors.blue,
+                    ]
+                  ),
+                  borderRadius: BorderRadius.circular(8.0),
+                  image: DecorationImage(
+                    image: AssetImage('images/promo.jpeg')
+                  ),
+                ),
+                margin: EdgeInsets.only(left: 10.0, right: 10.0),
+                height: 150.0,
+                width: 300.0,
+                child: null,
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
